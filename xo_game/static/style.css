@@ -1,0 +1,380 @@
+/* === static/style.css === */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f2f6fc, #e0ecf8);
+    margin: 0;
+  padding: 0;
+  background: #121212;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+    color: #2a6ddf;
+    margin-bottom: 10px;
+}
+
+.status, .scoreboard, .timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 12px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid #2a6ddf;
+    border-radius: 10px;
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 100px;
+    cursor: pointer;
+    color: #333;
+    transition: background }
+    /* Reset & Base */
+/* Add these styles under your existing .red-glass and .blue-glass definitions */
+
+/* Host (Red) glow effect */
+.red-glass:hover {
+  box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Joined (Blue) glow effect */
+.blue-glass:hover {
+  box-shadow: 0 0 20px 5px rgba(0, 100, 255, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+.player {
+  transition: box-shadow 0.3s ease;
+}
+/* Base style for both containers */
+.player {
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Host (Red Glassmorphic) */
+.red-glass {
+  background: rgba(255, 50, 50, 0.25);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.red-glass:hover {
+  background: rgba(255, 80, 80, 0.4);
+  box-shadow: 0 0 25px 5px rgba(255, 0, 0, 0.6);
+  transform: scale(1.03);
+}
+
+/* Joined (Blue Glassmorphic) */
+.blue-glass {
+  background: rgba(0, 100, 255, 0.25);
+  border: 1px solid rgba(0, 100, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 100, 255, 0.3);
+}
+
+.blue-glass:hover {
+  background: rgba(50, 150, 255, 0.4);
+  box-shadow: 0 0 25px 5px rgba(0, 100, 255, 0.6);
+  transform: scale(1.03);
+}
+
+/* Avatar style */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.red-glass {
+  background: rgba(255, 0, 0, 0.15);
+}
+.blue-glass {
+  background: rgba(0, 100, 255, 0.15);
+}
+
+.room-id {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Player Info */
+.players {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+.player {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 16px;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid #fff;
+}
+.player-label {
+  font-weight: bold;
+}
+
+/* Game Info */
+.game-info {
+  font-size: 18px;
+}
+
+/* Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 2.5rem;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+.cell:hover {
+  background: rgba(255,255,255,0.1);
+}
+.cell.taken {
+  cursor: not-allowed;
+}
+
+/* Scoreboard & Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.score span {
+  margin-right: 15px;
+  font-size: 18px;
+}
+.red-text {
+  color: #ff4c4c;
+}
+.blue-text {
+  color: #4686ec;
+}
+
+#resetBtn {
+  padding: 8px 18px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#resetBtn:hover {
+  background: #ccc;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-content {
+  background: rgba(255,255,255,0.15);
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+}
+.popup-content button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+  color: white;
+}
+
+.header, .game-info, .footer, .board {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-right: 10px;
+}
+
+#player-x {
+  color: #ff4b5c;
+}
+
+#player-o {
+  color: #4686ec;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 2rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+}
+
+.cell.taken.X {
+  color: #ff4b5c;  /* red */
+}
+
+.cell.taken.O {
+  color: #4686ec;  /* blue */
+}
+
+
+.cell:hover {
+    background-color: #e6efff;
+    transform: scale(1.05);
+}
+
+.cell.taken {
+    pointer-events: none;
+    background-color: #d1d1d1;
+    color: #666;
+}
+
+.info {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #444;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #2a6ddf;
+    border: none;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #1b52b5;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+

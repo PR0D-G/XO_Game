@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XO Game - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rubik', sans-serif;
+    }
+    .container {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+      max-width: 400px;
+      width: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-custom {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+    .form-control {
+      border-radius: 8px;
+      padding: 10px;
+    }
+    h2 {
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Welcome to XO Game</h2>
+  <input id="nameInput" class="form-control mb-3" type="text" placeholder="Enter your name" required>
+  <button class="btn btn-primary btn-custom" data-bs-toggle="modal" data-bs-target="#createModal">➕ Create Room</button>
+  <button class="btn btn-success btn-custom" data-bs-toggle="modal" data-bs-target="#joinModal">🔑 Join Room</button>
+</div>
+
+<!-- Create Room Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Room</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="hostName" class="form-control mb-2" placeholder="Enter your name again">
+        <input type="password" id="roomPassCreate" class="form-control mb-2" placeholder="Enter room password">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary w-100" onclick="startGame(true)">Create & Play</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Join Room Modal -->
+<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Join Room</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="roomIdJoin" class="form-control mb-2" placeholder="Enter Host ID">
+        <input type="password" id="roomPassJoin" class="form-control mb-2" placeholder="Enter room password">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success w-100" onclick="startGame(false)">Join & Play</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function generateId(length = 6) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let id = '';
+    for (let i = 0; i < length; i++) {
+      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+  }
+
+  function startGame(isHost) {
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) return alert('Please enter your name first.');
+
+    const userId = generateId();
+    const hostName = document.getElementById('hostName')?.value.trim();
+    const roomId = isHost ? userId : document.getElementById('roomIdJoin').value.trim();
+    const password = isHost ? document.getElementById('roomPassCreate').value : document.getElementById('roomPassJoin').value;
+
+    if (!roomId || !password) return alert('Room info missing.');
+
+    // Redirect to game with query
+    const url = `/game?name=${encodeURIComponent(name)}&id=${encodeURIComponent(userId)}&room=${encodeURIComponent(roomId)}&host=${isHost}`;
+    window.location.href = url;
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
